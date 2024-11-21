@@ -114,5 +114,39 @@ fetch('https://gist.githubusercontent.com/harsh3195/b441881e0020817b84e34d27ba44
    createTable(maleStudents, "Male Students");
    createTable(femaleStudents, "Female Students");
 
-  
+   attachGenderTableSorting(maleStudents, femaleStudents);
 }
+
+function attachGenderTableSorting(maleStudents, femaleStudents) {
+   document.getElementById("sort1-btn").addEventListener('click', () => {
+       maleStudents.sort((a, b) => a.first_name.localeCompare(b.first_name));
+       femaleStudents.sort((a, b) => a.first_name.localeCompare(b.first_name));
+       handleSortByGender();
+   });
+
+   document.getElementById("sort2-btn").addEventListener('click', () => {
+       maleStudents.sort((a, b) => b.first_name.localeCompare(a.first_name));
+       femaleStudents.sort((a, b) => b.first_name.localeCompare(a.first_name));
+       handleSortByGender();
+   });
+
+   document.getElementById("sort3-marks").addEventListener('click', () => {
+       maleStudents.sort((a, b) => a.marks - b.marks);
+       femaleStudents.sort((a, b) => a.marks - b.marks);
+       handleSortByGender();
+   });
+
+//    document.getElementById("sort4-pass").addEventListener('click', () => {
+//       let malePassed = maleStudents.filter(student => student.passing === true);
+//         let femalePassed = femaleStudents.filter(student => student.passing === true);
+//         handleSortByGender(malePassed, femalePassed);
+//   });  
+
+   document.getElementById("sort5-class").addEventListener('click', () => {
+       maleStudents.sort((a, b) => a.class - b.class);
+       femaleStudents.sort((a, b) => a.class - b.class);
+       handleSortByGender();
+   });
+}
+
+
